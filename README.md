@@ -23,7 +23,7 @@ _To be defined:_
 
 | Name               | Email                 |
 | ------------------ | --------------------- |
-| Muhammad Harris    | mharis@sandiego.edu   |
+| Muhammad Haris    | mharis@sandiego.edu   |
 | Daniel Shifrin     | dshifrin@sandiego.edu |
 | Subhabrata Ganguli | sganguli@sandiego.edu |
 
