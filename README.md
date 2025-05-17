@@ -29,7 +29,7 @@ _To be defined:_
 
 ---
 
-## 🗂️ Project Management
+## Project Management
 
 We are using **Asana** to manage our project milestones and deliverables.  
 🔗 [Asana Project Board](https://app.asana.com/1/952672460738672/project/1210280905126017/list/1210281001415248)
