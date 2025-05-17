@@ -1,4 +1,4 @@
-# AAI 540 – Machine Learning Operations Final Project
+# AAI 540 – Machine Learning Operations - Final Project
 
 University of San Diego  
 Spring 2025
