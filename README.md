@@ -1,13 +1,13 @@
 # AAI 540 – Machine Learning Operations Final Project  
 **University of San Diego – Spring 2025**
 
-## 📍 Project Overview
+## Project Overview
 This repository contains the final project for AAI 540: Machine Learning Operations, developed as part of the M.S. in Applied Artificial Intelligence program at the University of San Diego.
 
-## 🎯 Project Goal
+## Project Goal
 To design and implement a complete MLOps pipeline that predicts hospital readmissions using the Diabetes 130-US hospitals dataset. The pipeline spans data ingestion, feature engineering, model training, batch inference, model monitoring, and CI/CD automation using AWS SageMaker.
 
-## 📦 Project Scope
+## Project Scope
 - Clean and process raw healthcare data
 - Store features in SageMaker Feature Store
 - Train a Logistic Regression model using `StandardScaler` and one-hot encoding
@@ -16,7 +16,7 @@ To design and implement a complete MLOps pipeline that predicts hospital readmis
 - Monitor prediction quality using SageMaker Model Monitor
 - Build a CI/CD pipeline with SageMaker Pipelines and simulate retraining
 
-## 👥 Team Members
+## Team Members
 
 | Name                | Email                        |
 |---------------------|------------------------------|
@@ -24,7 +24,7 @@ To design and implement a complete MLOps pipeline that predicts hospital readmis
 | Daniel Shifrin      | dshifrin@sandiego.edu        |
 | Subhabrata Ganguli  | sganguli@sandiego.edu        |
 
-## 🧱 Pipeline Overview
+## Pipeline Overview
 
 This project follows a 7-stage modular pipeline, implemented across individual notebooks:
 
@@ -38,7 +38,7 @@ This project follows a 7-stage modular pipeline, implemented across individual n
 | 06   | `06_batch_inference.ipynb`               | Run SageMaker batch transform and save output for monitoring |
 | 07   | `07_cicd_pipeline.ipynb`                 | Define and trigger full CI/CD pipeline including model quality monitoring |
 
-## 🗂️ Directory Structure
+## Directory Structure
 
 .
 ├── data/ # Processed data and outputs
@@ -62,18 +62,18 @@ markdown
 Copy
 Edit
 
-## 📅 Project Management
+## Project Management
 We used [Asana](https://asana.com) to manage milestones and coordinate team contributions.  
 🔗 *Asana Project Board (link to be added)*
 
-## 🧰 Tools & Technologies
+## Tools & Technologies
 - Python 3.x
 - AWS SageMaker (Feature Store, Pipelines, Model Monitor)
 - Jupyter Notebooks
 - Git & GitHub
 - Pandas, Scikit-learn, Boto3
 
-## 📜 License
+## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
