@@ -38,33 +38,11 @@ This project follows a 7-stage modular pipeline, implemented across individual n
 | 06   | `06_batch_inference.ipynb`               | Run SageMaker batch transform and save output for monitoring |
 | 07   | `07_cicd_pipeline.ipynb`                 | Define and trigger full CI/CD pipeline including model quality monitoring |
 
-## Directory Structure
-
-.
-├── data/ # Processed data and outputs
-├── log/ # Raw logs and batch outputs
-├── model/ # Trained model and metadata
-├── registry/ # Model registry and monitoring outputs
-├── visualizations/ # Plots and charts
-├── 01_data_and_featurestore.ipynb
-├── 02_feature_engineering.ipynb
-├── 03_model_training.ipynb
-├── 04_evaluation_and_reporting.ipynb
-├── 05_monitoring_and_registry.ipynb
-├── 06_batch_inference.ipynb
-├── 07_cicd_pipeline.ipynb
-├── FinalProject.ipynb # Reference model development notebook
-├── inference.py # Custom inference logic for batch transform
-├── featurestore_metadata.json # Feature group metadata
-└── README.md
-
-markdown
-Copy
-Edit
 
 ## Project Management
-We used [Asana](https://asana.com) to manage milestones and coordinate team contributions.  
-🔗 *Asana Project Board (link to be added)*
+We are using Asana to coordinate tasks, manage milestones, and track progress for this project.
+[View our Asana Project Board](https://app.asana.com/1/952672460738672/project/1210280905126017/board/1210281001415249)
+
 
 ## Tools & Technologies
 - Python 3.x
