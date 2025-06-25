@@ -3,6 +3,7 @@ import joblib
 import os
 from io import StringIO
 import logging
+import numpy as np # Import numpy for npy format
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -75,26 +76,22 @@ def predict_fn(input_data, model):
     """
     logger.info(f"predict_fn: Received input_data for prediction. Shape: {input_data.shape}")
     logger.info(f"predict_fn: Input_data dtypes:\n{input_data.dtypes.to_string()}")
-    logger.info(f"predict_fn: Input_data values (first 5 rows):\n{input_data.head().to_string()}") # Added for more detail
+    logger.info(f"predict_fn: Input_data values (first 5 rows):\n{input_data.head().to_string()}")
 
     try:
         predictions = model.predict(input_data)
         logger.info("predict_fn: Model prediction successful.")
-        # Log a snippet of predictions if they are small enough
         logger.info(f"predict_fn: Raw predictions (first 10 values): {predictions[:10] if hasattr(predictions, '__len__') else predictions}")
         return predictions
     except Exception as e:
-        # CRITICAL ADDITION: Log the full traceback if model.predict fails
         logger.error(f"predict_fn: Error during model prediction: {e}", exc_info=True)
-        # Log the problematic input_data to help debug model-specific issues
         logger.error(f"predict_fn: Problematic input_data head:\n{input_data.head().to_string()}")
         raise
 
 def output_fn(prediction, content_type):
     """
     Converts the model's prediction into the desired output format.
-    For 'text/csv', it converts a single prediction (or array of predictions)
-    into a newline-separated string.
+    Handles 'text/csv' (for client) and 'application/x-npy' (for monitor).
     """
     logger.info(f"output_fn: Received prediction for output. Content type requested: {content_type}")
 
@@ -108,6 +105,27 @@ def output_fn(prediction, content_type):
         except Exception as e:
             logger.error(f"output_fn: Error converting prediction to CSV: {e}")
             raise
+    # --- CRITICAL ADDITION: Handle application/x-npy for the monitor ---
+    elif content_type == "application/x-npy":
+        try:
+            # Ensure prediction is a NumPy array. If it's a single scalar, make it an array.
+            if not isinstance(prediction, np.ndarray):
+                prediction_array = np.array(prediction)
+            else:
+                prediction_array = prediction
+
+            output = StringIO()
+            # np.save directly writes binary to the file-like object
+            np.save(output, prediction_array)
+            output.seek(0) # Rewind to the beginning of the StringIO buffer
+            npy_bytes = output.read() # Read as a string of binary data (Python 3 handles this)
+            logger.info(f"output_fn: Outputting application/x-npy (binary data).")
+            return npy_bytes
+        except Exception as e:
+            logger.error(f"output_fn: Error converting prediction to application/x-npy: {e}", exc_info=True)
+            raise
+    # ------------------------------------------------------------------
     else:
         logger.error(f"output_fn: Unsupported accept type: {content_type}")
         raise ValueError(f"Unsupported accept type: {content_type}")
+
